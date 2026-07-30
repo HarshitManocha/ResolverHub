@@ -83,31 +83,28 @@ All routes except `/api/health` and `/api/auth/*` need an
 `Authorization: Bearer <token>` header. Every response uses the same envelope:
 `{ success, message, data }`.
 
-| Method | Path | Who |
-| --- | --- | --- |
-| `POST` | `/api/auth/signup` · `/api/auth/login` | Anyone |
-| `GET` | `/api/profile/me` | Any signed in user |
-| `PUT` | `/api/profile/update` · `/api/profile/change-password` | Any signed in user |
-| `POST` | `/api/company` | Any user without a company |
-| `GET` | `/api/company/me` | Company members |
-| `GET` | `/api/company/free-members` | Admin |
-| `PUT`/`DELETE` | `/api/company/:companyId` | Admin |
-| `POST` | `/api/projects/create` | Admin |
-| `GET` | `/api/projects/all` · `/api/projects/:id` | Company members |
-| `GET` | `/api/projects/members` · `/api/projects/free-members` | Project members |
-| `PATCH` | `/api/projects/members/:memberId/role` | ProjectAdmin |
-| `PUT`/`DELETE` | `/api/projects/:id` | Admin / ProjectAdmin |
-| `POST` | `/api/bugs` | Tester |
-| `GET` | `/api/bugs` (filters: `projectId`, `status`, `priority`, `assignedTo`) | Project members; Admin must pass `projectId` |
-| `GET`/`PATCH` | `/api/bugs/:id` | Role dependent |
-| `DELETE` | `/api/bugs/:id` | ProjectAdmin |
-| `POST` | `/api/comments` · `GET /api/comments/:bugId` | Project members |
-| `POST` | `/api/notifications/company/join` · `/api/notifications/project/join` | Any signed in user |
-| `GET` | `/api/notifications` · `/company-requests` · `/project-requests` | Recipient |
-| `PATCH` | `/api/notifications/read-all` · `/:id/read` · `/:id/accept` · `/:id/deny` | Recipient |
-
-Accepting a project join request requires a `role` of `Developer` or `Tester` in
-the body.
+| Method | Path | Who | Notes |
+| --- | --- | --- | --- |
+| `POST` | `/api/auth/signup` · `/api/auth/login` | Anyone | - |
+| `GET` | `/api/profile/me` | Any signed in user | - |
+| `PUT` | `/api/profile/update` · `/api/profile/change-password` | Any signed in user | - |
+| `POST` | `/api/company` | Any user without a company | - |
+| `GET` | `/api/company/me` | Company members | - |
+| `GET` | `/api/company/free-members` | Admin | - |
+| `PUT`/`DELETE` | `/api/company/:companyId` | Admin | Have not used this yet |
+| `POST` | `/api/projects/create` | Admin | - |
+| `GET` | `/api/projects/all` · `/api/projects/:id` | Company members | - |
+| `GET` | `/api/projects/members` · `/api/projects/free-members` | Project members | - |
+| `PATCH` | `/api/projects/members/:memberId/role` | ProjectAdmin | - |
+| `PUT`/`DELETE` | `/api/projects/:id` | Admin / ProjectAdmin | - |
+| `POST` | `/api/bugs` | Tester | - |
+| `GET` | `/api/bugs` (filters: `projectId`, `status`, `priority`, `assignedTo`) | Project members; Admin must pass `projectId` | - |
+| `GET`/`PATCH` | `/api/bugs/:id` | Role dependent | - |
+| `DELETE` | `/api/bugs/:id` | ProjectAdmin | - |
+| `POST` | `/api/comments` · `GET /api/comments/:bugId` | Project members | - |
+| `POST` | `/api/notifications/company/join` · `/api/notifications/project/join` | Any signed in user | - |
+| `GET` | `/api/notifications` · `/company-requests` · `/project-requests` | Recipient | - |
+| `PATCH` | `/api/notifications/read-all` · `/:id/read` · `/:id/accept` · `/:id/deny` | Recipient | - |
 
 ## Layout
 
