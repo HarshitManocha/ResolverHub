@@ -1,5 +1,7 @@
 # ResolverHub
 
+Live Demo: https://resolver-hub.vercel.app/
+
 A MERN bug tracker built around real team structure: a company owns projects, a
 project has a lead, and testers, developers and leads each see a different set of
 actions on a bug.
