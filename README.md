@@ -9,7 +9,7 @@ actions on a bug.
 
 ## How the roles work
 
-Everyone signs up with no role. What you can do depends on where you sit.
+Everyone signs up with no role. What you can do depends on where you sit using RBAC (Role Based Access Control)
 
 | Role | How you get it | What you can do |
 | --- | --- | --- |
@@ -33,15 +33,17 @@ Requires Node.js 20+ and a MongoDB you can reach (a local `mongod` or an Atlas
 cluster).
 
 ```bash
-# 1. API config
-cp .env.example .env          # then edit MONGODB_URI and JWT_SECRET
+# 1. Installing packages
+cd Backend
+npm install
+cd ../Frontend
+npm install
 
-# 2. Client config
-cp Frontend/.env.example Frontend/.env
-
-# 3. Install
-cd Backend  && npm install
-cd ../Frontend && npm install
+# 2. env config
+create .env inside Frontend
+Add VITE_API_URL inside of it
+create .env inside Backend
+Add MONGODB_URI, JWT_SECRET, JWT_EXPIRES_IN, PORT, NODE_ENV, GROQ_API_KEY
 ```
 
 ### Environment variables
@@ -54,14 +56,13 @@ Root `.env` (read by the API; `Backend/.env` overrides it if present):
 | `JWT_SECRET` | yes | — | Use a long random string |
 | `JWT_EXPIRES_IN` | no | `24h` | |
 | `PORT` | no | `5000` | Must match `VITE_API_URL` |
-| `CLIENT_ORIGIN` | no | `http://localhost:5173,http://localhost:4173` | Comma separated allowed browser origins |
-| `DNS_SERVERS` | no | `8.8.8.8,8.8.4.4` | Some ISPs cannot resolve Atlas SRV records. Set to `system` to use your own resolver |
+| `GROQ_API_KEY` | yes | — | The AI integration won't work properly |
 
 `Frontend/.env`:
 
 | Variable | Default | Notes |
 | --- | --- | --- |
-| `VITE_API_URL` | `http://localhost:5000/api` | Include the `/api` prefix |
+| `VITE_API_URL` | `http://localhost:5000/api` | Include the `/api` |
 
 ## Running
 
