@@ -18,18 +18,7 @@ import aiRoutes from "./routes/aiRoutes.js";
 
 const app = express();
 
-app.use(
-	cors({
-		origin(origin, callback) {
-			// Allow same-origin/tooling requests that omit the Origin header.
-			if (!origin || env.clientOrigins.includes(origin)) {
-				return callback(null, true);
-			}
-			return callback(new Error(`Origin not allowed by CORS: ${origin}`));
-		},
-		credentials: true,
-	}),
-);
+app.use(cors());
 app.use(express.json());
 
 app.get("/api/health", (req, res) => {
